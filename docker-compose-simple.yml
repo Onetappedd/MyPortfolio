@@ -1,0 +1,31 @@
+version: '3'
+services:
+  portfolio-db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=portfolio
+    ports:
+      - "5432:5432"
+
+  portfolio-ui:
+    image: nginx:alpine
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+
+  portfolio-api:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@portfolio-db:5432/portfolio
+    depends_on:
+      - portfolio-db
+    command: >
+      sh -c "
+        echo 'Starting API server...' &&
+        uvicorn main:app --host 0.0.0.0 --port 8000
+      "

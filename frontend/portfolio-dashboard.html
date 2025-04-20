@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Dashboard - My Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Add Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Portfolio</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio-creator.html">Portfolio Creator</a></li>
+                    <li><a href="portfolio-dashboard.html" class="active">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="portfolio-dashboard" class="page-section">
+        <div class="container">
+            <h2>Portfolio Dashboard</h2>
+            
+            <div class="dashboard-controls">
+                <div class="portfolio-selector">
+                    <label for="portfolio-select">Select Portfolio:</label>
+                    <select id="portfolio-select">
+                        <option value="">Loading portfolios...</option>
+                    </select>
+                </div>
+                <div class="portfolio-actions">
+                    <button id="refresh-portfolio" class="btn"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    <button id="edit-portfolio" class="btn btn-secondary"><i class="fas fa-edit"></i> Edit</button>
+                    <button id="delete-portfolio" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                </div>
+            </div>
+            
+            <div class="portfolio-overview">
+                <div class="portfolio-header">
+                    <h3 id="portfolio-name-display">Select a portfolio</h3>
+                    <p id="portfolio-description-display"></p>
+                </div>
+                
+                <div class="portfolio-metrics">
+                    <div class="metric-card">
+                        <h4>Total Value</h4>
+                        <p id="total-value">$0.00</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Risk Level</h4>
+                        <p id="risk-level-display">-</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Created</h4>
+                        <p id="created-date">-</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="allocation-chart-section">
+                    <h3>Asset Allocation</h3>
+                    <div id="dashboard-chart-container">
+                        <canvas id="dashboard-allocation-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="allocation-table-section">
+                    <h3>Portfolio Holdings</h3>
+                    <div id="dashboard-table-container">
+                        <table id="dashboard-allocation-table">
+                            <thead>
+                                <tr>
+                                    <th>Asset</th>
+                                    <th>Type</th>
+                                    <th>Ticker</th>
+                                    <th>Allocation</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Portfolio allocations will be displayed here -->
+                                <tr>
+                                    <td colspan="5" class="empty-state">Select a portfolio to view holdings</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Placeholder for a future performance chart -->
+            <div class="performance-section">
+                <h3>Portfolio Performance</h3>
+                <div id="performance-chart-container">
+                    <p class="placeholder-message">Performance tracking coming soon</p>
+                    <!-- <canvas id="performance-chart"></canvas> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for edit portfolio -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Edit Portfolio</h3>
+            <form id="edit-portfolio-form">
+                <div class="form-group">
+                    <label for="edit-name">Portfolio Name</label>
+                    <input type="text" id="edit-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-description">Description</label>
+                    <textarea id="edit-description"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-risk-level">Risk Level</label>
+                    <input type="range" id="edit-risk-level" min="1" max="10" step="1" value="5">
+                    <div class="risk-value" id="edit-risk-value">5</div>
+                </div>
+                
+                <button type="submit" class="btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for confirm delete -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Confirm Delete</h3>
+            <p>Are you sure you want to delete this portfolio? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button id="confirm-delete" class="btn btn-danger">Delete Portfolio</button>
+                <button id="cancel-delete" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name - All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="js/portfolio-dashboard.js"></script>
+</body>
+</html>

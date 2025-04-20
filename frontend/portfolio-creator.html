@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Creator - My Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Add Chart.js for pie chart visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Portfolio</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio-creator.html" class="active">Portfolio Creator</a></li>
+                    <li><a href="portfolio-dashboard.html">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="portfolio-creator" class="page-section">
+        <div class="container">
+            <h2>Create Your Investment Portfolio</h2>
+            
+            <div class="creator-content">
+                <div class="creator-form">
+                    <h3>Portfolio Details</h3>
+                    <form id="portfolio-form">
+                        <div class="form-group">
+                            <label for="portfolio-name">Portfolio Name</label>
+                            <input type="text" id="portfolio-name" placeholder="My Retirement Portfolio" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="portfolio-description">Description (Optional)</label>
+                            <textarea id="portfolio-description" placeholder="Saving for retirement in 2045..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="initial-investment">Initial Investment ($)</label>
+                            <input type="number" id="initial-investment" min="1000" step="1000" value="10000" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="risk-level">Risk Level</label>
+                            <div class="risk-slider-container">
+                                <input type="range" id="risk-level" min="1" max="10" step="1" value="5">
+                                <div class="risk-labels">
+                                    <span>Conservative</span>
+                                    <span>Moderate</span>
+                                    <span>Aggressive</span>
+                                </div>
+                                <div class="risk-value">5</div>
+                            </div>
+                        </div>
+                        
+                        <button type="button" id="generate-portfolio" class="btn">Generate Portfolio</button>
+                        <button type="submit" id="save-portfolio" class="btn btn-secondary" disabled>Save Portfolio</button>
+                    </form>
+                </div>
+                
+                <div class="allocation-preview">
+                    <h3>Portfolio Preview</h3>
+                    <div id="allocation-chart-container">
+                        <canvas id="allocation-chart"></canvas>
+                    </div>
+                    <div id="allocation-table-container">
+                        <table id="allocation-table">
+                            <thead>
+                                <tr>
+                                    <th>Asset</th>
+                                    <th>Type</th>
+                                    <th>Allocation</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Portfolio allocations will be displayed here -->
+                                <tr>
+                                    <td colspan="4" class="empty-state">Generate a portfolio to see allocations</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name - All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="js/portfolio-creator.js"></script>
+</body>
+</html>

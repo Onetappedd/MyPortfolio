@@ -1,0 +1,288 @@
+/* Portfolio Creator Styles */
+.page-section {
+    padding-top: 120px;
+    min-height: calc(100vh - 80px);
+}
+
+.creator-content {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.creator-form, .allocation-preview {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.risk-slider-container {
+    position: relative;
+}
+
+.risk-slider-container input[type="range"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.risk-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: #718096;
+}
+
+.risk-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4a5568;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#allocation-chart-container {
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+#allocation-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#allocation-table th,
+#allocation-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+#allocation-table th {
+    background-color: #f7fafc;
+    font-weight: 600;
+}
+
+.empty-state {
+    text-align: center;
+    color: #a0aec0;
+    padding: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background: #4299e1;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    margin-right: 10px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #3182ce;
+}
+
+.btn:disabled {
+    background: #cbd5e0;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: #718096;
+}
+
+.btn-secondary:hover {
+    background: #4a5568;
+}
+
+.btn-danger {
+    background: #f56565;
+}
+
+.btn-danger:hover {
+    background: #e53e3e;
+}
+
+/* Portfolio Dashboard Styles */
+.dashboard-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.portfolio-selector select {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    font-family: inherit;
+    min-width: 200px;
+}
+
+.portfolio-overview {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-metrics {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.metric-card {
+    background: #f7fafc;
+    border-radius: 8px;
+    padding: 15px;
+    flex: 1;
+    text-align: center;
+}
+
+.metric-card h4 {
+    color: #718096;
+    margin-bottom: 10px;
+}
+
+.metric-card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.dashboard-content {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.allocation-chart-section,
+.allocation-table-section {
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#dashboard-chart-container {
+    height: 300px;
+}
+
+#dashboard-allocation-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#dashboard-allocation-table th,
+#dashboard-allocation-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+#dashboard-allocation-table th {
+    background-color: #f7fafc;
+    font-weight: 600;
+}
+
+.performance-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+#performance-chart-container {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.placeholder-message {
+    color: #a0aec0;
+    font-style: italic;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+/* Responsive design for portfolio features */
+@media (max-width: 768px) {
+    .creator-content {
+        flex-direction: column;
+    }
+    
+    .dashboard-content {
+        flex-direction: column;
+    }
+    
+    .portfolio-metrics {
+        flex-direction: column;
+    }
+    
+    .dashboard-controls {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

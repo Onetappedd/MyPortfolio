@@ -1,0 +1,58 @@
+portfolio-app/
+├── .github/                      # GitHub Actions workflows
+│   └── workflows/
+│       ├── ci.yml                # Continuous integration
+│       └── deploy.yml            # Deployment workflow
+├── backend/                      # FastAPI application
+│   ├── app/
+│   │   ├── api/                  # API endpoints
+│   │   │   ├── __init__.py
+│   │   │   ├── dependencies.py   # Dependency injection
+│   │   │   ├── portfolios.py     # Portfolio routes
+│   │   │   └── users.py          # User routes
+│   │   ├── core/                 # Core modules
+│   │   │   ├── __init__.py
+│   │   │   ├── config.py         # App configuration
+│   │   │   └── security.py       # Auth and security
+│   │   ├── db/                   # Database
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py           # Base model
+│   │   │   └── session.py        # DB session setup
+│   │   ├── models/               # SQLAlchemy models
+│   │   │   ├── __init__.py
+│   │   │   ├── portfolio.py
+│   │   │   └── user.py
+│   │   ├── schemas/              # Pydantic schemas
+│   │   │   ├── __init__.py
+│   │   │   ├── portfolio.py
+│   │   │   └── user.py
+│   │   ├── services/             # Business logic
+│   │   │   ├── __init__.py
+│   │   │   └── portfolio_generator.py
+│   │   └── main.py               # Application entry
+│   ├── alembic/                  # Database migrations
+│   ├── tests/                    # Backend tests
+│   ├── requirements.txt
+│   └── Dockerfile
+├── frontend/                     # React application
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/               # Static assets
+│   │   ├── components/           # Reusable components
+│   │   │   ├── layout/
+│   │   │   ├── forms/
+│   │   │   └── charts/
+│   │   ├── pages/                # Application pages
+│   │   │   ├── Home/
+│   │   │   ├── GeneratePortfolio/
+│   │   │   └── ManagePortfolio/
+│   │   ├── services/             # API services
+│   │   ├── utils/                # Helper functions
+│   │   ├── App.tsx
+│   │   └── index.tsx
+│   ├── package.json
+│   └── Dockerfile
+├── docker-compose.yml            # Container orchestration
+├── .env.example                  # Environment variables template
+├── README.md                     # Project documentation
+└── start.sh                      # One-click startup script

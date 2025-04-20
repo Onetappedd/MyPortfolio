@@ -1,0 +1,53 @@
+# Portfolio Management System Docker Compose Configuration
+services:
+  portfolio-api:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@portfolio-db:5432/portfolio
+    depends_on:
+      - portfolio-db
+    volumes:
+      - ./alembic.ini:/app/alembic.ini
+      - ./alembic:/app/alembic
+    command: >
+      bash -c "
+        echo 'Waiting for database...' &&
+        sleep 5 &&
+        python -c 'import time; import psycopg2; 
+        while True: 
+          try: 
+            conn = psycopg2.connect(\"dbname=portfolio user=postgres password=postgres host=portfolio-db\"); 
+            conn.close(); 
+            break; 
+          except: 
+            print(\"Database not ready yet. Waiting...\"); 
+            time.sleep(1);' &&
+        echo 'Running migrations...' &&
+        alembic upgrade head &&
+        echo 'Starting API server...' &&
+        uvicorn main:app --host 0.0.0.0 --port 8000
+      "
+
+  portfolio-ui:
+    image: nginx:alpine
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+
+  portfolio-db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=portfolio
+    volumes:
+      - portfolio_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  portfolio_data:
